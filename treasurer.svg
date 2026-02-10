@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+  <defs>
+    <linearGradient id="bgGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F97316;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FB923C;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="150" cy="150" r="150" fill="url(#bgGrad3)"/>
+  
+  <!-- Person Silhouette -->
+  <g transform="translate(150, 150)" fill="white" opacity="0.9">
+    <!-- Head -->
+    <circle cx="0" cy="-40" r="35"/>
+    
+    <!-- Body -->
+    <path d="M -50,20 Q -50,0 -35,-10 L -25,-15 Q -15,-10 0,-10 Q 15,-10 25,-15 L 35,-10 Q 50,0 50,20 L 50,80 Q 40,85 0,85 Q -40,85 -50,80 Z"/>
+    
+    <!-- Initial T -->
+    <text x="-16" y="15" font-family="Arial, sans-serif" font-size="50" font-weight="bold" fill="#F97316">T</text>
+  </g>
+</svg>
