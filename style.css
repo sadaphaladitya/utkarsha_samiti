@@ -185,47 +185,45 @@ body {
     letter-spacing: 1px;
 }
 
-/* Header Contact Info */
-.header-contact-info {
+/* Header Mahapurush Section (Top Right) */
+.header-mahapurush-section {
     display: flex;
-    gap: 1.5rem;
-}
-
-.info-block {
-    display: flex;
+    gap: 1.2rem;
     align-items: center;
-    gap: 0.8rem;
-    padding-left: 1.5rem;
-    border-left: 1px solid #ddd;
 }
 
-.info-block:first-child {
-    border-left: none;
-    padding-left: 0;
+.mahapurush-header-item {
+    transition: transform 0.3s ease;
 }
 
-.info-icon {
-    font-size: 1.5rem;
-    color: #004080;
+.mahapurush-header-item img {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #ff9100;
+    /* Orange Border */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
-.info-details {
-    display: flex;
-    flex-direction: column;
+.mahapurush-header-item:hover img {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    border-color: #002b5e;
+    /* Blue on hover */
 }
 
-.info-label {
-    font-size: 0.75rem;
-    color: #888;
-    font-weight: 600;
-    text-transform: uppercase;
+/* Tooltip on hover */
+.mahapurush-header-item {
+    position: relative;
 }
 
-.info-text {
-    font-size: 0.9rem;
-    color: #333;
-    font-weight: 600;
+.mahapurush-header-item:hover::after {
+    content: attr(title);
+    /* This won't work directly with img title, simpler to rely on browser tooltip or add data-title */
 }
+
 
 /* Main Navigation Bar */
 .main-navbar {
