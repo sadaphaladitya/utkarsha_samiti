@@ -5,7 +5,7 @@ const navMenu = document.getElementById('navMenu');
 if (hamburger) {
     hamburger.addEventListener('click', () => {
         navMenu.classList.toggle('active');
-        
+
         // Animate hamburger
         const spans = hamburger.querySelectorAll('span');
         if (navMenu.classList.contains('active')) {
@@ -39,13 +39,13 @@ let lastScroll = 0;
 
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
-    
+
     if (currentScroll > 50) {
         navbar.classList.add('scrolled');
     } else {
         navbar.classList.remove('scrolled');
     }
-    
+
     lastScroll = currentScroll;
 });
 
@@ -55,7 +55,7 @@ const animateCounter = (element, target) => {
     const increment = target / 100;
     const duration = 2000;
     const stepTime = duration / 100;
-    
+
     const timer = setInterval(() => {
         current += increment;
         if (current >= target) {
@@ -75,7 +75,7 @@ if (statNumbers.length > 0) {
         threshold: 0.5,
         rootMargin: '0px'
     };
-    
+
     const statsObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
@@ -85,7 +85,7 @@ if (statNumbers.length > 0) {
             }
         });
     }, observerOptions);
-    
+
     statNumbers.forEach(stat => {
         statsObserver.observe(stat);
     });
@@ -110,9 +110,9 @@ const contactForm = document.getElementById('contactForm');
 const formMessage = document.getElementById('formMessage');
 
 if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
+    contactForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        
+
         // Get form data
         const formData = {
             name: document.getElementById('name').value,
@@ -121,26 +121,26 @@ if (contactForm) {
             subject: document.getElementById('subject').value,
             message: document.getElementById('message').value
         };
-        
+
         // Validate
         if (!formData.name || !formData.email || !formData.subject || !formData.message) {
             showMessage('Please fill in all required fields.', 'error');
             return;
         }
-        
+
         // Email validation
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(formData.email)) {
             showMessage('Please enter a valid email address.', 'error');
             return;
         }
-        
+
         // Simulate form submission
         showMessage('Thank you for your message! We will get back to you soon.', 'success');
-        
+
         // Reset form
         contactForm.reset();
-        
+
         // In a real application, you would send this data to a server
         console.log('Form Data:', formData);
     });
@@ -150,7 +150,7 @@ function showMessage(message, type) {
     if (formMessage) {
         formMessage.textContent = message;
         formMessage.className = `form-message ${type}`;
-        
+
         // Auto-hide success message after 5 seconds
         if (type === 'success') {
             setTimeout(() => {
@@ -178,7 +178,7 @@ if (revealElements.length > 0) {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     });
-    
+
     revealElements.forEach(element => {
         element.style.opacity = '0';
         element.style.transform = 'translateY(30px)';
@@ -199,4 +199,51 @@ if (hero) {
 }
 
 // Log page load
-console.log('Sevabhai Utkarsha Samiti Website Loaded Successfully!');
+// Member Details Modal Logic
+const modal = document.getElementById('memberModal');
+const closeModalBtn = document.querySelector('.close-modal');
+
+// Open Modal Function
+function openMemberModal(element) {
+    if (!modal) return;
+
+    // Get data from attributes
+    const name = element.getAttribute('data-name');
+    const position = element.getAttribute('data-position');
+    const imgSrc = element.getAttribute('data-img');
+    const desc = element.getAttribute('data-desc');
+
+    // Populate modal content
+    document.getElementById('modalName').textContent = name;
+    document.getElementById('modalPosition').textContent = position;
+    document.getElementById('modalImg').src = imgSrc;
+    document.getElementById('modalDesc').innerHTML = desc; // Use innerHTML for formatting
+
+    // Show modal
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Prevent scrolling
+}
+
+// Close Modal Function
+if (closeModalBtn) {
+    closeModalBtn.addEventListener('click', () => {
+        modal.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+    });
+}
+
+// Close on Outside Click
+window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});
+
+// Close on Escape Key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});
