@@ -1,0 +1,14 @@
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-shivaji" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B35;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F7931E;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="300" height="300" fill="url(#bg-shivaji)"/>
+  <circle cx="150" cy="120" r="60" fill="#FFF" opacity="0.2"/>
+  <text x="150" y="200" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#FFF" text-anchor="middle">छत्रपती</text>
+  <text x="150" y="235" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#FFF" text-anchor="middle">शिवाजी महाराज</text>
+  <circle cx="150" cy="90" r="15" fill="#FFF" opacity="0.8"/>
+  <polygon points="150,50 160,80 140,80" fill="#FFD700"/>
+</svg>

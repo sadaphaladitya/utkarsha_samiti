@@ -1,0 +1,15 @@
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-shahu" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D4A373;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C68642;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="300" height="300" fill="url(#bg-shahu)"/>
+  <circle cx="150" cy="120" r="60" fill="#FFF" opacity="0.2"/>
+  <text x="150" y="200" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#FFF" text-anchor="middle">राजर्षी</text>
+  <text x="150" y="235" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#FFF" text-anchor="middle">शाहू महाराज</text>
+  <circle cx="150" cy="85" r="20" fill="#FFF" opacity="0.8"/>
+  <polygon points="150,50 165,75 135,75" fill="#FFD700"/>
+  <rect x="135" y="100" width="30" height="35" fill="#FFF" opacity="0.3" rx="3"/>
+</svg>

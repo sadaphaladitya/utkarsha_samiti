@@ -1,14 +1,14 @@
 // Mobile Navigation Toggle
-const hamburger = document.getElementById('hamburger');
-const navMenu = document.getElementById('navMenu');
+function toggleMenu() {
+    const navLinks = document.getElementById('navLinks');
+    const btn = document.getElementById('mobileMenuBtn');
 
-if (hamburger) {
-    hamburger.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
+    if (navLinks && btn) {
+        navLinks.classList.toggle('active');
 
         // Animate hamburger
-        const spans = hamburger.querySelectorAll('span');
-        if (navMenu.classList.contains('active')) {
+        const spans = btn.querySelectorAll('span');
+        if (navLinks.classList.contains('active')) {
             spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
             spans[1].style.opacity = '0';
             spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
@@ -17,15 +17,18 @@ if (hamburger) {
             spans[1].style.opacity = '1';
             spans[2].style.transform = 'none';
         }
-    });
+    }
 }
 
 // Close mobile menu when clicking outside
 document.addEventListener('click', (e) => {
-    if (navMenu && hamburger) {
-        if (!e.target.closest('.nav-wrapper')) {
-            navMenu.classList.remove('active');
-            const spans = hamburger.querySelectorAll('span');
+    const navLinks = document.getElementById('navLinks');
+    const btn = document.getElementById('mobileMenuBtn');
+
+    if (navLinks && btn && navLinks.classList.contains('active')) {
+        if (!e.target.closest('.nav-links') && !e.target.closest('#mobileMenuBtn')) {
+            navLinks.classList.remove('active');
+            const spans = btn.querySelectorAll('span');
             spans[0].style.transform = 'none';
             spans[1].style.opacity = '1';
             spans[2].style.transform = 'none';
@@ -34,20 +37,22 @@ document.addEventListener('click', (e) => {
 });
 
 // Navbar scroll effect
-const navbar = document.querySelector('.navbar');
+const navbar = document.querySelector('.main-navbar');
 let lastScroll = 0;
 
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
+if (navbar) {
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
 
-    if (currentScroll > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
+        if (currentScroll > 50) {
+            navbar.style.boxShadow = '0 4px 15px rgba(0,0,0,0.15)';
+        } else {
+            navbar.style.boxShadow = '0 4px 10px rgba(0,0,0,0.1)';
+        }
 
-    lastScroll = currentScroll;
-});
+        lastScroll = currentScroll;
+    });
+}
 
 // Animated Counter for Stats
 const animateCounter = (element, target) => {
@@ -97,10 +102,27 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
+            const headerOffset = 150; // Account for the new header height
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
             });
+
+            // Close mobile menu if open
+            const navLinks = document.getElementById('navLinks');
+            const btn = document.getElementById('mobileMenuBtn');
+            if (navLinks && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                if (btn) {
+                    const spans = btn.querySelectorAll('span');
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            }
         }
     });
 });
@@ -198,7 +220,6 @@ if (hero) {
     });
 }
 
-// Log page load
 // Member Details Modal Logic
 const modal = document.getElementById('memberModal');
 const closeModalBtn = document.querySelector('.close-modal');

@@ -60,25 +60,75 @@
             </div>
         </div>
     </div>
-    <nav class="navbar">
+    <!-- Top Bar -->
+    <div class="top-bar">
         <div class="container">
-            <div class="nav-wrapper">
-                <div class="logo">
-                    <img src="utkarsha_logo.png" alt="उत्कर्ष समिती नाशिक विभाग" class="logo-img">
-                    <div class="logo-text">
-                        <h2>उत्कर्ष समिती <span class="logo-location">नाशिक विभाग</span></h2>
-                        <p class="tagline">समाजसेवा • सहकार्य • उत्कर्ष</p>
+            <div class="top-bar-content">
+                <span>SEVABHAI UTKARSHA SAMITI | Reg. No. F-12345/Nashik</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header with Logo & Contact Info -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-inner">
+                <!-- Logo Section -->
+                <div class="header-logo-section">
+                    <img src="utkarsha_logo.png" alt="Logo" class="main-logo">
+                    <div class="header-text">
+                        <h1>उत्कर्ष समिती <span class="sub-location">नाशिक विभाग</span></h1>
+                        <p>सेवाभावी संस्था, नाशिक</p>
                     </div>
                 </div>
-                <ul class="nav-menu" id="navMenu">
-                    <li><a href="index.html" class="active">मुख्यपृष्ठ</a></li>
-                    <li><a href="about.html">आमच्याबद्दल</a></li>
-                    <li><a href="contact.html">संपर्क</a></li>
-                </ul>
-                <div class="header-cta">
-                    <a href="contact.html" class="btn-header">आमच्यासोबत जुडा</a>
+
+                <!-- Contact Info Section -->
+                <div class="header-contact-info">
+                    <div class="info-block">
+                        <div class="info-icon">📍</div>
+                        <div class="info-details">
+                            <span class="info-label">ADDRESS</span>
+                            <span class="info-text">पेठ रोड, नाशिक - 422003</span>
+                        </div>
+                    </div>
+                    <div class="info-block">
+                        <div class="info-icon">✉️</div>
+                        <div class="info-details">
+                            <span class="info-label">E-MAIL</span>
+                            <span class="info-text">info@utkarsha.org</span>
+                        </div>
+                    </div>
+                    <div class="info-block">
+                        <div class="info-icon">📞</div>
+                        <div class="info-details">
+                            <span class="info-label">PHONE</span>
+                            <span class="info-text">0253-1234567</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="hamburger" id="hamburger">
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="main-navbar">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-item home-btn">HOME</a>
+                <div class="nav-links" id="navLinks">
+                    <a href="about.html" class="nav-item">ABOUT US</a>
+                    <a href="#projects" class="nav-item">PROJECTS</a>
+                    <a href="#committee" class="nav-item">COMMITTEE</a>
+                    <a href="#features" class="nav-item">ACTIVITIES</a>
+                    <a href="#donate" class="nav-item">DONATION</a>
+                    <a href="contact.html" class="nav-item">CONTACT US</a>
+                    <a href="#" class="nav-item marathi-btn">मराठी</a>
+                </div>
+                <div class="nav-search">
+                    <button class="search-btn">🔍</button>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMenu()">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -230,62 +280,9 @@
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features">
-        <div class="container">
-            <div class="section-header">
-                <h2>आमची कार्यक्षेत्रे</h2>
-                <p>आमच्या समाजात सकारात्मक बदल घडवण्यासाठी समर्पित</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="9" cy="7" r="4"></circle>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                        </svg>
-                    </div>
-                    <h3>समुदाय विकास</h3>
-                    <p>सहयोगी प्रयत्न आणि कार्शील कार्यक्रमांद्वारे अधिक सशक्त आणि लवचिक समुदाय तयार करणे</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                        </svg>
-                    </div>
-                    <h3>आरोग्य उपक्रम</h3>
-                    <p>उपेक्षित भागात दर्जेदार आरोग्य सेवांची उपलब्धता आणि निरोगीपणाला प्रोत्साहन</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-                        </svg>
-                    </div>
-                    <h3>शैक्षणिक कार्यक्रम</h3>
-                    <p>सर्व वयोगटातील व्यक्तींसाठी शिक्षणाच्या संधी आणि कौशल्य विकास</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <polyline points="12 6 12 12 16 14"></polyline>
-                        </svg>
-                    </div>
-                    <h3>सामाजिक कल्याण</h3>
-                    <p>आवश्यक सेवा आणि समर्थन कार्यक्रमांद्वारे असुरक्षित लोकांना मदत</p>
-                </div>
-            </div>
-        </div>
-    </section>
+
+
+
 
     <!-- Projects Section -->
     <section class="projects">
