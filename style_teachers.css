@@ -1,0 +1,74 @@
+/* Teacher Section within Project Card */
+.project-teachers-section {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px dashed rgba(139, 92, 246, 0.2);
+}
+
+.project-teachers-section h4 {
+    color: var(--secondary);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.teachers-grid {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.teacher-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(139, 92, 246, 0.05);
+    padding: 1rem;
+    border-radius: 12px;
+    border: 1px solid rgba(139, 92, 246, 0.1);
+    transition: all 0.3s ease;
+    flex: 1;
+    min-width: 250px;
+}
+
+.teacher-card:hover {
+    background: white;
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.15);
+    transform: translateY(-2px);
+}
+
+.teacher-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--secondary);
+    background: white;
+    flex-shrink: 0;
+}
+
+.teacher-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.teacher-info h5 {
+    font-size: 1rem;
+    color: var(--text-dark);
+    margin-bottom: 0.2rem;
+    font-weight: 600;
+}
+
+.teacher-edu {
+    font-size: 0.85rem;
+    color: var(--primary);
+    font-weight: 500;
+    margin-bottom: 0.1rem;
+}
+
+.teacher-exp {
+    font-size: 0.8rem;
+    color: var(--text-light);
+}

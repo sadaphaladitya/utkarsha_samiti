@@ -178,7 +178,7 @@ body {
 }
 
 .logo h2 {
-    font-size: 1.35rem;
+    font-size: 2rem;
     font-weight: 700;
     background: var(--gradient-primary);
     -webkit-background-clip: text;
@@ -191,7 +191,7 @@ body {
 }
 
 .navbar.scrolled .logo h2 {
-    font-size: 1.2rem;
+    font-size: 1.6rem;
 }
 
 .tagline {
@@ -210,7 +210,7 @@ body {
 }
 
 .logo-location {
-    font-size: 1.1rem;
+    font-size: 1.8rem;
     font-weight: 600;
     color: var(--secondary);
     background: none;
@@ -219,7 +219,7 @@ body {
 }
 
 .navbar.scrolled .logo-location {
-    font-size: 1rem;
+    font-size: 1.4rem;
 }
 
 .nav-menu {
@@ -2209,6 +2209,181 @@ body {
     .section-header h2 {
         font-size: 1.5rem;
     }
+}
+
+/* iPhone SE and Very Small Devices (320px) */
+@media (max-width: 320px) {
+    .container {
+        padding: 0 12px;
+    }
+
+    .top-header {
+        font-size: 0.7rem;
+        padding: 0.5rem 0;
+    }
+
+    .header-contact {
+        padding: 0.4rem 0.7rem;
+        font-size: 0.7rem;
+    }
+
+    .social-icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .navbar {
+        top: 48px !important;
+    }
+
+    .logo-img {
+        height: 36px;
+    }
+
+    .logo h2 {
+        font-size: 0.85rem;
+    }
+
+    .tagline {
+        font-size: 0.55rem;
+    }
+
+    .nav-menu {
+        width: 90%;
+    }
+
+    .hero {
+        padding-top: 5rem;
+        min-height: 70vh;
+    }
+
+    .hero-title {
+        font-size: 1.4rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.85rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .btn {
+        padding: 0.85rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .committee-section {
+        padding: 2rem 0;
+    }
+
+    .section-header h2 {
+        font-size: 1.4rem;
+    }
+
+    .section-header p {
+        font-size: 0.85rem;
+    }
+
+    .committee-grid {
+        gap: 1.5rem;
+    }
+
+    .committee-card {
+        padding: 1.5rem 1rem;
+    }
+
+    .committee-image {
+        width: 90px;
+        height: 90px;
+    }
+
+    .committee-info h3 {
+        font-size: 0.95rem;
+    }
+
+    .committee-info .position {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+    }
+
+    .stat-label {
+        font-size: 0.85rem;
+    }
+
+    .feature-card {
+        padding: 1.25rem;
+    }
+
+    .feature-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .feature-card h3 {
+        font-size: 1rem;
+    }
+
+    .feature-card p {
+        font-size: 0.85rem;
+    }
+}
+
+/* Landscape Mode for Mobile Devices */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        min-height: 100vh;
+        padding-top: 120px;
+    }
+
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .committee-section {
+        padding: 2rem 0;
+    }
+
+    .navbar {
+        position: fixed !important;
+    }
+}
+
+/* Medium Devices (tablets, 768px to 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        max-width: 90%;
+    }
+
+    .committee-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem;
+    }
+}
+
+.logo h2 {
+    font-size: 0.9rem;
+}
+
+.committee-info h3 {
+    font-size: 0.95rem;
+}
+
+.section-header h2 {
+    font-size: 1.5rem;
+}
 }
 
 /* iPhone SE and Very Small Devices (320px) */
