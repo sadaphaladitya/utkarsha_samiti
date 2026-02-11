@@ -1,22 +1,22 @@
 /* CSS Variables & Reset */
 :root {
-    --primary: hsl(280, 85%, 60%);
-    --primary-dark: hsl(280, 85%, 50%);
-    --primary-light: hsl(280, 85%, 70%);
-    --secondary: hsl(340, 82%, 58%);
-    --accent: hsl(190, 90%, 50%);
-    --text-dark: hsl(220, 20%, 15%);
-    --text-light: hsl(220, 10%, 40%);
-    --bg-light: hsl(250, 100%, 98%);
+    --primary: hsl(25, 95%, 50%);
+    --primary-dark: hsl(20, 100%, 45%);
+    --primary-light: hsl(30, 100%, 65%);
+    --secondary: hsl(5, 85%, 55%);
+    --accent: hsl(45, 100%, 50%);
+    --text-dark: hsl(220, 25%, 15%);
+    --text-light: hsl(220, 10%, 45%);
+    --bg-light: hsl(30, 40%, 98%);
     --bg-white: hsl(0, 0%, 100%);
-    --border: hsl(220, 15%, 90%);
+    --border: hsl(25, 20%, 90%);
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 20px rgba(139, 92, 246, 0.15);
-    --shadow-lg: 0 12px 40px rgba(139, 92, 246, 0.25);
-    --shadow-glow: 0 0 30px rgba(139, 92, 246, 0.3);
-    --gradient-primary: linear-gradient(135deg, hsl(280, 85%, 60%) 0%, hsl(340, 82%, 58%) 50%, hsl(30, 95%, 60%) 100%);
-    --gradient-secondary: linear-gradient(135deg, hsl(190, 90%, 50%) 0%, hsl(280, 85%, 60%) 100%);
-    --gradient-overlay: linear-gradient(135deg, rgba(139, 92, 246, 0.95), rgba(236, 72, 153, 0.95));
+    --shadow-md: 0 4px 20px rgba(255, 140, 0, 0.15);
+    --shadow-lg: 0 12px 40px rgba(255, 140, 0, 0.25);
+    --shadow-glow: 0 0 30px rgba(255, 140, 0, 0.3);
+    --gradient-primary: linear-gradient(135deg, #FF8C00 0%, #FF4500 50%, #B22222 100%);
+    --gradient-secondary: linear-gradient(135deg, #FFD700 0%, #FF8C00 100%);
+    --gradient-overlay: linear-gradient(135deg, rgba(255, 69, 0, 0.95), rgba(178, 34, 34, 0.95));
     --gradient-card: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
 }
 
@@ -121,8 +121,8 @@ body {
 
 /* Top Bar */
 .top-bar {
-    background-color: #002b5e;
-    /* Dark Blue */
+    background-color: #4a0404;
+    /* Deep Maroon */
     color: white;
     padding: 8px 0;
     font-size: 0.85rem;
@@ -139,9 +139,12 @@ body {
 
 /* Main Header (Logo & Contact) */
 .main-header {
-    background-color: #ffffff;
+    background-color: #fcfcfc;
+    /* Very light grey/white */
+    background-image: linear-gradient(to bottom, #ffffff, #fff8f0);
     padding: 1.5rem 0;
     font-family: 'Poppins', sans-serif;
+    border-bottom: 1px solid #e1e4e8;
 }
 
 .header-inner {
@@ -165,8 +168,8 @@ body {
 
 .header-text h1 {
     font-size: 2rem;
-    color: #002b5e;
-    /* Dark Blue Text */
+    color: var(--primary-dark);
+    /* Deep Saffron/Maroon Text */
     margin: 0;
     font-weight: 700;
     line-height: 1.2;
@@ -210,8 +213,8 @@ body {
 .mahapurush-header-item:hover img {
     transform: scale(1.1);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    border-color: #002b5e;
-    /* Blue on hover */
+    border-color: var(--primary);
+    /* Saffron on hover */
 }
 
 /* Tooltip on hover */
@@ -227,9 +230,9 @@ body {
 
 /* Main Navigation Bar */
 .main-navbar {
-    background-color: #004080;
-    /* Blue Background */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(90deg, #800000 0%, #a52a2a 100%);
+    /* Maroon Background */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -1893,8 +1896,8 @@ body {
     }
 
     .logo-location {
-        color: #EC4899;
-        font-weight: 600;
+        color: var(--primary);
+        font-weight: 700;
     }
 
     .tagline {
@@ -1986,100 +1989,102 @@ body {
     }
 
     .hamburger span {
-        background: var(--primary);
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+            background: var(--primary);
+        }
+
         box-shadow: 0 1px 4px rgba(139, 92, 246, 0.4);
     }
 
-    .hamburger.active span:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-        background: #EC4899;
-    }
+    background: var(--primary);
+}
 
-    .hamburger.active span:nth-child(2) {
-        opacity: 0;
-    }
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
 
-    .hamburger.active span:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-        background: #EC4899;
-    }
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+    background: #EC4899;
+}
 
-    /* Hero Section */
-    .hero {
-        padding-top: 140px;
-        min-height: 80vh;
-    }
+/* Hero Section */
+.hero {
+    padding-top: 140px;
+    min-height: 80vh;
+}
 
-    .hero-title {
-        font-size: clamp(2rem, 8vw, 3rem);
-    }
+.hero-title {
+    font-size: clamp(2rem, 8vw, 3rem);
+}
 
-    .hero-subtitle {
-        font-size: clamp(1rem, 3vw, 1.2rem);
-    }
+.hero-subtitle {
+    font-size: clamp(1rem, 3vw, 1.2rem);
+}
 
-    .hero-buttons {
-        gap: 1rem;
-    }
+.hero-buttons {
+    gap: 1rem;
+}
 
-    /* Committee Section */
-    .committee-section {
-        padding: 3rem 0;
-    }
+/* Committee Section */
+.committee-section {
+    padding: 3rem 0;
+}
 
-    .committee-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-    }
+.committee-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
 
-    .committee-card {
-        padding: 1.5rem;
-    }
+.committee-card {
+    padding: 1.5rem;
+}
 
-    .committee-image {
-        width: 120px;
-        height: 120px;
-    }
+.committee-image {
+    width: 120px;
+    height: 120px;
+}
 
-    .committee-info h3 {
-        font-size: 1.1rem;
-    }
+.committee-info h3 {
+    font-size: 1.1rem;
+}
 
-    .committee-info .position {
-        font-size: 0.9rem;
-        padding: 0.4rem 0.8rem;
-    }
+.committee-info .position {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+}
 
-    /* Features Section */
-    .features-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
+/* Features Section */
+.features-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
 
-    /* Stats */
-    .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-    }
+/* Stats */
+.stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
 
-    /* Section Headers */
-    .section-header h2 {
-        font-size: 2rem;
-    }
+/* Section Headers */
+.section-header h2 {
+    font-size: 2rem;
+}
 
-    .section-header p {
-        font-size: 1rem;
-    }
+.section-header p {
+    font-size: 1rem;
+}
 
-    /* Values Grid */
-    .values-grid {
-        grid-template-columns: 1fr;
-    }
+/* Values Grid */
+.values-grid {
+    grid-template-columns: 1fr;
+}
 
-    /* Team Grid */
-    .team-grid {
-        grid-template-columns: 1fr;
-    }
+/* Team Grid */
+.team-grid {
+    grid-template-columns: 1fr;
+}
 }
 
 /* Mobile (480px and below) */
