@@ -11,6 +11,213 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Instagram-like Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            padding: 10px 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: filter 0.3s;
+        }
+
+        .gallery-item:hover img {
+            filter: brightness(0.8);
+        }
+
+        .delete-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .gallery-item:hover .delete-btn {
+            opacity: 1;
+        }
+
+        /* Instagram Modal Layout */
+        .instagram-layout {
+            display: flex !important;
+            flex-direction: row !important;
+            background: #fff;
+            max-width: 900px !important;
+            width: 95% !important;
+            height: 600px !important;
+            border-radius: 4px;
+            overflow: hidden;
+            padding: 0 !important;
+        }
+
+        .upload-layout {
+            max-width: 500px !important;
+            background: white !important;
+            padding: 2.5rem !important;
+            border-radius: 15px !important;
+            display: flex;
+            flex-direction: column !important;
+            height: auto !important;
+        }
+
+        .modal-image-container {
+            flex: 1.5;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-modal-img {
+            max-width: 100% !important;
+            max-height: 100% !important;
+            width: auto !important;
+            height: auto !important;
+            object-fit: contain;
+            margin-bottom: 0 !important;
+        }
+
+        .modal-sidebar {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: #fff;
+            color: #262626;
+            border-left: 1px solid #efefef;
+        }
+
+        .sidebar-header {
+            padding: 15px;
+            border-bottom: 1px solid #efefef;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .sidebar-content {
+            flex-grow: 1;
+            padding: 15px;
+            overflow-y: auto;
+        }
+
+        .post-description {
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .modal-interaction {
+            border-top: 1px solid #efefef;
+            padding: 15px;
+            margin-top: 0 !important;
+        }
+
+        .interaction-btns {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .btn-interaction {
+            background: none !important;
+            border: none !important;
+            padding: 0 !important;
+            cursor: pointer;
+            font-size: 1.5rem !important;
+            color: #262626 !important;
+        }
+
+        .likes-count-text {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        #commentForm {
+            border-top: 1px solid #efefef;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        #commentText {
+            border: none !important;
+            outline: none !important;
+            flex-grow: 1;
+            font-size: 0.9rem;
+            padding: 5px 0;
+            background: transparent !important;
+            color: #262626 !important;
+        }
+
+        #commentForm button {
+            background: none !important;
+            color: #0095f6 !important;
+            border: none !important;
+            font-weight: 600;
+            cursor: pointer;
+            opacity: 0.5;
+        }
+
+        #commentForm button:enabled {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .instagram-layout {
+                flex-direction: column !important;
+                height: 90vh !important;
+                max-width: 100% !important;
+            }
+
+            .modal-image-container {
+                flex: none;
+                height: 40%;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 5px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -119,7 +326,7 @@
             <div class="gallery-grid">
                 <!-- Row 1 -->
                 <div class="gallery-item"
-                    onclick="openGalleryModal('hero-banner.svg', 'शिक्षण उपक्रम', 'बालवाडीतील मुले नवीन गोष्टी शिकताना')">
+                    onclick="openGalleryModal('hero-banner.svg', 'शिक्षण उपक्रम', 'बालवाडीतील मुले नवीन गोष्टी शिकताना', null, 0)">
                     <img src="hero-banner.svg" alt="शिक्षण उपक्रम">
                     <div class="gallery-overlay">
                         <h3>शिक्षण उपक्रम</h3>
@@ -127,7 +334,7 @@
                     </div>
                 </div>
                 <div class="gallery-item"
-                    onclick="openGalleryModal('balwadi_bg.svg', 'आरोग्य शिबिर', 'समुदायासाठी मोफत आरोग्य तपासणी')">
+                    onclick="openGalleryModal('balwadi_bg.svg', 'आरोग्य शिबिर', 'समुदायासाठी मोफत आरोग्य तपासणी', null, 0)">
                     <img src="balwadi_bg.svg" alt="आरोग्य शिबिर">
                     <div class="gallery-overlay">
                         <h3>आरोग्य शिबिर</h3>
@@ -135,7 +342,7 @@
                     </div>
                 </div>
                 <div class="gallery-item"
-                    onclick="openGalleryModal('hero-banner.svg', 'वृक्षारोपण', 'पर्यावरण रक्षणासाठी आमचा पुढाकार')">
+                    onclick="openGalleryModal('hero-banner.svg', 'वृक्षारोपण', 'पर्यावरण रक्षणासाठी आमचा पुढाकार', null, 0)">
                     <img src="hero-banner.svg" alt="वृक्षारोपण">
                     <div class="gallery-overlay">
                         <h3>वृक्षारोपण</h3>
@@ -145,7 +352,7 @@
 
                 <!-- Row 2 -->
                 <div class="gallery-item"
-                    onclick="openGalleryModal('balwadi_bg.svg', 'कौशल्य विकास', 'युवकांसाठी संगणक प्रशिक्षण वर्ग')">
+                    onclick="openGalleryModal('balwadi_bg.svg', 'कौशल्य विकास', 'युवकांसाठी संगणक प्रशिक्षण वर्ग', null, 0)">
                     <img src="balwadi_bg.svg" alt="कौशल्य विकास">
                     <div class="gallery-overlay">
                         <h3>कौशल्य विकास</h3>
@@ -153,7 +360,7 @@
                     </div>
                 </div>
                 <div class="gallery-item"
-                    onclick="openGalleryModal('hero-banner.svg', 'स्थापना दिवस', 'संस्थेच्या वर्धापन दिनाचे सेलिब्रेशन')">
+                    onclick="openGalleryModal('hero-banner.svg', 'स्थापना दिवस', 'संस्थेच्या वर्धापन दिनाचे सेलिब्रेशन', null, 0)">
                     <img src="hero-banner.svg" alt="स्थापना दिवस">
                     <div class="gallery-overlay">
                         <h3>स्थापना दिवस</h3>
@@ -161,7 +368,7 @@
                     </div>
                 </div>
                 <div class="gallery-item"
-                    onclick="openGalleryModal('balwadi_bg.svg', 'मदत वाटप', 'गरजू विद्यार्थ्यांना शालेय साहित्याचे वाटप')">
+                    onclick="openGalleryModal('balwadi_bg.svg', 'मदत वाटप', 'गरजू विद्यार्थ्यांना शालेय साहित्याचे वाटप', null, 0)">
                     <img src="balwadi_bg.svg" alt="मदत वाटप">
                     <div class="gallery-overlay">
                         <h3>मदत वाटप</h3>
@@ -172,14 +379,50 @@
         </div>
     </section>
 
-    <!-- Gallery Modal -->
     <div id="galleryModal" class="gallery-modal">
         <button class="gallery-modal-close" onclick="closeGalleryModal()">&times;</button>
-        <div class="gallery-modal-content">
-            <img src="" alt="" class="gallery-modal-img" id="galleryModalImg">
-            <div class="gallery-modal-info" style="color: white; margin-top: 1rem; text-align: center;">
-                <h3 id="galleryModalTitle" style="font-size: 1.5rem; margin-bottom: 0.5rem;"></h3>
-                <p id="galleryModalDesc" style="font-size: 1rem; opacity: 0.9;"></p>
+        <div class="gallery-modal-content instagram-layout">
+            <!-- Left Side: Image -->
+            <div class="modal-image-container">
+                <img src="" alt="" class="gallery-modal-img" id="galleryModalImg">
+            </div>
+
+            <!-- Right Side: Sidebar -->
+            <div class="modal-sidebar">
+                <div class="sidebar-header">
+                    <div class="user-icon">US</div>
+                    <div style="font-weight: 600; font-size: 0.9rem;">Utkarsha Samiti</div>
+                </div>
+
+                <div class="sidebar-content">
+                    <div class="post-description">
+                        <strong style="margin-right: 5px;">Utkarsha Samiti</strong>
+                        <span id="galleryModalDescText"></span>
+                    </div>
+
+                    <!-- Comments section -->
+                    <div id="commentsList" style="font-size: 0.9rem;">
+                        <!-- Comments will appear here -->
+                    </div>
+                </div>
+
+                <!-- Interaction Section -->
+                <div class="modal-interaction">
+                    <div class="interaction-btns">
+                        <button id="likeBtn" class="btn-interaction">❤️</button>
+                        <button class="btn-interaction"
+                            onclick="document.getElementById('commentText').focus()">💬</button>
+                    </div>
+                    <div class="likes-count-text">
+                        <span id="likeCount">0</span> likes
+                    </div>
+                </div>
+
+                <!-- Comment Form -->
+                <form id="commentForm">
+                    <input type="text" id="commentText" placeholder="कमेंट लिहा..." required>
+                    <button type="submit" id="submitComment">Post</button>
+                </form>
             </div>
         </div>
     </div>
@@ -187,8 +430,7 @@
     <!-- Upload Modal -->
     <div id="uploadModal" class="gallery-modal">
         <button class="gallery-modal-close" onclick="closeUploadModal()">&times;</button>
-        <div class="gallery-modal-content"
-            style="max-width: 500px; background: white; padding: 2.5rem; border-radius: 15px;">
+        <div class="gallery-modal-content upload-layout">
             <h2 style="color: var(--primary-dark); margin-bottom: 1.5rem; text-align: center;">नवीन फोटो जोडा</h2>
             <form id="uploadForm" class="contact-form">
                 <div class="form-group">

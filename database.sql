@@ -8,7 +8,18 @@ CREATE TABLE IF NOT EXISTS gallery (
     title VARCHAR(255) NOT NULL,
     description TEXT,
     image_path VARCHAR(255) NOT NULL,
+    likes INT DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Table for Comments
+CREATE TABLE IF NOT EXISTS gallery_comments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    photo_id INT NOT NULL,
+    comment TEXT NOT NULL,
+    user_name VARCHAR(100) DEFAULT 'Guest',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (photo_id) REFERENCES gallery(id) ON DELETE CASCADE
 );
 
 -- Table for Admission Forms

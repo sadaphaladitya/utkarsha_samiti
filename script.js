@@ -367,20 +367,125 @@ function updateClock() {
 
 // Gallery Modal Logic
 const galleryModal = document.getElementById('galleryModal');
+let currentPhotoId = null;
 
-function openGalleryModal(imgSrc, title, desc) {
+function openGalleryModal(imgSrc, title, desc, id, likes) {
     if (!galleryModal) return;
 
+    currentPhotoId = id;
     const modalImg = document.getElementById('galleryModalImg');
-    const modalTitle = document.getElementById('galleryModalTitle');
-    const modalDesc = document.getElementById('galleryModalDesc');
+    const modalDescText = document.getElementById('galleryModalDescText');
+    const likeCount = document.getElementById('likeCount');
+    const commentsList = document.getElementById('commentsList');
+    const modalSidebar = document.querySelector('.modal-sidebar');
 
     if (modalImg) modalImg.src = imgSrc;
-    if (modalTitle) modalTitle.textContent = title;
-    if (modalDesc) modalDesc.textContent = desc;
+    if (modalDescText) modalDescText.textContent = desc;
+    if (likeCount) likeCount.textContent = likes || 0;
+
+    // Show/Hide Interaction Section
+    const interactionSec = document.querySelector('.modal-interaction');
+    const commentFrm = document.getElementById('commentForm');
+
+    if (id) {
+        if (interactionSec) interactionSec.style.display = 'block';
+        if (commentFrm) commentFrm.style.display = 'flex';
+        loadComments(id);
+    } else {
+        // Hide interaction for hardcoded photos
+        if (interactionSec) interactionSec.style.display = 'none';
+        if (commentFrm) commentFrm.style.display = 'none';
+        if (commentsList) commentsList.innerHTML = '<p style="font-size: 0.85rem; opacity: 0.6; text-align:center;">ही माहिती केवळ पाहण्यासाठी आहे.</p>';
+    }
 
     galleryModal.classList.add('active');
     document.body.style.overflow = 'hidden';
+}
+
+function loadComments(photoId) {
+    const commentsList = document.getElementById('commentsList');
+    if (!commentsList) return;
+
+    commentsList.innerHTML = '<p style="font-size: 0.8rem; opacity: 0.5;">लोड होत आहे...</p>';
+
+    fetch(`comment_handler.php?photo_id=${photoId}`)
+        .then(response => {
+            if (!response.ok) throw new Error('Network response was not ok');
+            return response.json();
+        })
+        .then(comments => {
+            commentsList.innerHTML = '';
+            if (Array.isArray(comments) && comments.length > 0) {
+                comments.forEach(c => {
+                    const div = document.createElement('div');
+                    div.style.marginBottom = '12px';
+                    div.innerHTML = `
+                        <div style="font-size: 0.85rem;">
+                            <strong style="margin-right: 5px;">Guest</strong> ${c.comment}
+                        </div>
+                        <div style="font-size: 0.7rem; opacity: 0.5; margin-top: 2px;">${new Date(c.created_at).toLocaleDateString()}</div>
+                    `;
+                    commentsList.appendChild(div);
+                });
+            } else if (Array.isArray(comments)) {
+                commentsList.innerHTML = '<p style="font-size: 0.85rem; opacity: 0.5;">अजून कोणतीही कमेंट नाही.</p>';
+            } else if (comments.status === 'error') {
+                commentsList.innerHTML = `<p style="color: red; font-size: 0.8rem;">${comments.message}</p>`;
+            }
+        })
+        .catch(err => {
+            commentsList.innerHTML = '<p style="color: red; font-size: 0.8rem;">कमेंट लोड करता आल्या नाहीत.</p>';
+        });
+}
+
+// Like Button Handler
+const likeBtn = document.getElementById('likeBtn');
+if (likeBtn) {
+    likeBtn.onclick = function () {
+        if (!currentPhotoId) return;
+
+        const formData = new FormData();
+        formData.append('id', currentPhotoId);
+
+        fetch('like_handler.php', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    document.getElementById('likeCount').textContent = data.likes;
+                }
+            });
+    };
+}
+
+// Comment Form Handler
+const commentForm = document.getElementById('commentForm');
+if (commentForm) {
+    commentForm.onsubmit = function (e) {
+        e.preventDefault();
+        const commentText = document.getElementById('commentText').value;
+        if (!currentPhotoId || !commentText.trim()) return;
+
+        const formData = new FormData();
+        formData.append('photo_id', currentPhotoId);
+        formData.append('comment', commentText);
+
+        fetch('comment_handler.php', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    document.getElementById('commentText').value = '';
+                    loadComments(currentPhotoId);
+                } else {
+                    alert(data.message);
+                }
+            });
+    };
 }
 
 function closeGalleryModal() {
@@ -587,6 +692,10 @@ function loadGallery() {
     fetch('fetch_gallery.php')
         .then(response => response.json())
         .then(photos => {
+            if (photos.status === 'error') {
+                console.error('Gallery Error:', photos.message);
+                return;
+            }
             if (Array.isArray(photos)) {
                 photos.forEach(photo => {
                     if (document.querySelector(`div[data-id="${photo.id}"]`)) return;
@@ -608,7 +717,7 @@ function loadGallery() {
                     };
 
                     newItem.onclick = function () {
-                        openGalleryModal(photo.image_path, photo.title, photo.description || 'गॅलरी फोटो');
+                        openGalleryModal(photo.image_path, photo.title, photo.description || 'गॅलरी फोटो', photo.id, photo.likes);
                     };
 
                     newItem.innerHTML = `
