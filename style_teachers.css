@@ -61,6 +61,13 @@
     font-weight: 600;
 }
 
+.teacher-role {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--primary);
+    margin-bottom: 0.2rem;
+}
+
 .teacher-edu {
     font-size: 0.85rem;
     color: var(--primary);

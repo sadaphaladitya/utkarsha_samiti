@@ -78,12 +78,14 @@
                         <a href="index.html#projects" class="nav-item">PROJECTS ▾</a>
                         <div class="dropdown-content">
                             <a href="index.html#projects">All Projects</a>
-                            <a href="index.html#kindergarten">Utkarsh Balmandir (Balwadi)</a>
+                            <a href="balwadi.html">Utkarsh Balmandir (Balwadi)</a>
+                            <a href="admission.html">Admission Form</a>
                         </div>
                     </div>
+                    <a href="gallery.html" class="nav-item">GALLERY</a>
                     <a href="index.html#committee" class="nav-item">COMMITTEE</a>
                     <a href="index.html#features" class="nav-item">ACTIVITIES</a>
-                    <a href="index.html#donate" class="nav-item">DONATION</a>
+                    <a href="donation.html" class="nav-item">DONATION</a>
                     <a href="contact.html" class="nav-item">CONTACT US</a>
                     <a href="#" class="nav-item marathi-btn">मराठी</a>
                 </div>
@@ -155,12 +157,14 @@
                         आम्ही सतत विकसित होत आहोत आणि प्रवत्ती करत आहोत.</p>
                 </div>
                 <div class="story-image">
-                    <div class="image-placeholder">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                            <polyline points="21 15 16 10 5 21"></polyline>
+                    <div class="image-placeholder"
+                        style="background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; border-radius: 20px; box-shadow: var(--shadow-lg);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none"
+                            stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                         </svg>
                     </div>
                 </div>
@@ -470,9 +474,65 @@
 
 
 
+
             </div>
         </div>
     </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2>आमची गॅलरी</h2>
+                <p>आमच्या विविध उपक्रमांची काही क्षणचित्रे</p>
+            </div>
+            <div class="gallery-grid">
+                <!-- Gallery Item 1 -->
+                <div class="gallery-item"
+                    onclick="openGalleryModal('hero-banner.svg', 'शिक्षण उपक्रम', 'बालवाडीतील मुले नवीन गोष्टी शिकताना')">
+                    <img src="hero-banner.svg" alt="शिक्षण उपक्रम">
+                    <div class="gallery-overlay">
+                        <h3>शिक्षण उपक्रम</h3>
+                        <p>बालवाडीतील मुले नवीन गोष्टी शिकताना</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 2 -->
+                <div class="gallery-item"
+                    onclick="openGalleryModal('balwadi_bg.svg', 'आरोग्य शिबिर', 'समुदायासाठी मोफत आरोग्य तपासणी')">
+                    <img src="balwadi_bg.svg" alt="आरोग्य शिबिर">
+                    <div class="gallery-overlay">
+                        <h3>आरोग्य शिबिर</h3>
+                        <p>समुदायासाठी मोफत आरोग्य तपासणी</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 3 -->
+                <div class="gallery-item"
+                    onclick="openGalleryModal('hero-banner.svg', 'वृक्षारोपण', 'पर्यावरण रक्षणासाठी आमचा पुढाकार')">
+                    <img src="hero-banner.svg" alt="वृक्षारोपण">
+                    <div class="gallery-overlay">
+                        <h3>वृक्षारोपण</h3>
+                        <p>पर्यावरण रक्षणासाठी आमचा पुढाकार</p>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="gallery.html" class="btn btn-primary">अधिक फोटो पहा</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Modal -->
+    <div id="galleryModal" class="gallery-modal">
+        <button class="gallery-modal-close" onclick="closeGalleryModal()">&times;</button>
+        <div class="gallery-modal-content">
+            <img src="" alt="" class="gallery-modal-img" id="galleryModalImg">
+            <div class="gallery-modal-info" style="color: white; margin-top: 1rem; text-align: center;">
+                <h3 id="galleryModalTitle" style="font-size: 1.5rem; margin-bottom: 0.5rem;"></h3>
+                <p id="galleryModalDesc" style="font-size: 1rem; opacity: 0.9;"></p>
+            </div>
+        </div>
+    </div>
+
 
     <section class="cta">
         <div class="container">

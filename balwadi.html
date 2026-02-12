@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="mr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="उत्कर्ष बालमंदिर बालवाडी - एकदंत कॉलनी, अंबड, नाशिक. सेमी इंग्रजी माध्यम, उच्च शिक्षित शिक्षिका आणि खेळाद्वारे शिक्षण.">
+    <title>उत्कर्ष बालमंदिर (बालवाडी) - उत्कर्ष समिती नाशिक विभाग</title>
+    <link rel="stylesheet" href="style.css?v=1">
+    <link rel="stylesheet" href="style_teachers.css?v=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <span>UTKARSHA SAMITI NASHIK | Reg. No. F-12345/Nashik</span>
+                <div class="header-clock">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <span id="clock-text">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header with Logo & Contact Info -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-inner">
+                <!-- Logo Section -->
+                <div class="header-logo-section">
+                    <img src="utkarsha_logo.png" alt="Logo" class="main-logo">
+                    <div class="header-text">
+                        <h1>उत्कर्ष समिती <span class="sub-location">नाशिक विभाग</span></h1>
+                        <p>सेवाभावी संस्था, नाशिक</p>
+                    </div>
+                </div>
+
+                <!-- Mahapurush Images Section (Top Right) -->
+                <div class="header-mahapurush-section">
+                    <div class="mahapurush-header-item">
+                        <img src="shivaji_logo_new.png" alt="छत्रपती शिवाजी महाराज" title="छत्रपती शिवाजी महाराज">
+                    </div>
+                    <div class="mahapurush-header-item">
+                        <img src="ambedkar_logo_new.png" alt="डॉ. बाबासाहेब आंबेडकर" title="डॉ. बाबासाहेब आंबेडकर">
+                    </div>
+                    <div class="mahapurush-header-item">
+                        <img src="JOTI BA LOGO.png" alt="महात्मा ज्योतिबा फुले" title="महात्मा ज्योतिबा फुले">
+                    </div>
+                    <div class="mahapurush-header-item">
+                        <img src="savitribai log.png" alt="सावित्रीबाई फुले" title="सावित्रीबाई फुले">
+                    </div>
+                    <div class="mahapurush-header-item">
+                        <img src="shaumaharaj logo.png" alt="राजर्षी शाहू महाराज" title="राजर्षी शाहू महाराज">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="main-navbar">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-item home-btn">HOME</a>
+                <div class="nav-links" id="navLinks">
+                    <a href="about.html" class="nav-item">ABOUT US</a>
+                    <div class="dropdown-container">
+                        <a href="index.html#projects" class="nav-item active">PROJECTS ▾</a>
+                        <div class="dropdown-content">
+                            <a href="index.html#projects">All Projects</a>
+                            <a href="balwadi.html">Utkarsh Balmandir (Balwadi)</a>
+                            <a href="admission.html">Admission Form</a>
+                        </div>
+                    </div>
+                    <a href="gallery.html" class="nav-item">GALLERY</a>
+                    <a href="index.html#committee" class="nav-item">COMMITTEE</a>
+                    <a href="index.html#features" class="nav-item">ACTIVITIES</a>
+                    <a href="donation.html" class="nav-item">DONATION</a>
+                    <a href="contact.html" class="nav-item">CONTACT US</a>
+                    <a href="#" class="nav-item marathi-btn">मराठी</a>
+                </div>
+                <div class="nav-search">
+                    <button class="search-btn">🔍</button>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>उत्कर्ष बालमंदिर (बालवाडी)</h1>
+            <p>सेमी इंग्रजी माध्यम - खेळाखेळातून शिक्षण</p>
+        </div>
+    </section>
+
+    <!-- Project Details Section -->
+    <section class="project-details">
+        <div class="container">
+            <div class="project-card"
+                style="background-image: url('balwadi_bg.svg'); background-repeat: repeat; position: relative; z-index: 1;">
+                <div class="project-bg-overlay"
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.95); z-index: -1; border-radius: inherit;">
+                </div>
+
+                <div class="project-content">
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <div class="project-icon" style="margin: 0 auto 1rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                            </svg>
+                        </div>
+                        <h3>उत्कर्ष बालमंदिर बालवाडी</h3>
+                        <p class="project-subtitle">सेमी इंग्रजी माध्यम</p>
+                    </div>
+
+                    <p class="project-description" style="text-align: center; max-width: 800px; margin: 0 auto 2rem;">
+                        लहान मुलांच्या सर्वांगीण विकासासाठी आधुनिक शैक्षणिक सुविधा.
+                        खेळाखेळात शिकण्याची पद्धत वापरून मुलांना मराठी व इंग्रजी दोन्ही भाषांचे ज्ञान दिले जाते.</p>
+
+                    <div class="project-stats">
+                        <div class="project-stat">
+                            <span class="stat-icon">👶</span>
+                            <span class="stat-text">वय: २.५ - ६ वर्षे</span>
+                        </div>
+                        <div class="project-stat">
+                            <span class="stat-icon">📚</span>
+                            <span class="stat-text">आधुनिक अभ्यासक्रम</span>
+                        </div>
+                        <div class="project-stat full-width">
+                            <span class="stat-icon">📍</span>
+                            <span class="stat-text">एकदंत कॉलनी, प्लॉट नं. ५८, शिवांजली पेट्रोल पंपाच्या मागे,
+                                डी.जी.पी. नगर, नविन पाण्याच्या टाकी शेजारी, अंबड, नाशिक - १०</span>
+                        </div>
+                    </div>
+
+                    <!-- Kindergarten Features Banner -->
+                    <div class="kindergarten-features">
+                        <div class="features-header">
+                            <h4>✿ बालवाडी शाळेची वैशिष्ट्ये ✿</h4>
+                        </div>
+                        <div class="features-grid-two-col">
+                            <div class="features-column">
+                                <div class="feature-item">✿ इंग्रजी अक्षर ज्ञान व भाषा परिचय</div>
+                                <div class="feature-item">✿ उच्च शिक्षित शिक्षिका</div>
+                                <div class="feature-item">✿ प्रशस्त बैठक व्यवस्था</div>
+                                <div class="feature-item">✿ वार्षिक स्नेह सम्मेलन</div>
+                                <div class="feature-item">✿ मर्यादित विद्यार्थी संख्या</div>
+                                <div class="feature-item">✿ मुलांच्या बौद्धिक व शारीरिक विकासावर भर</div>
+                            </div>
+                            <div class="features-column">
+                                <div class="feature-item">✿ अर्धपूर्ण व आनंददायी शिक्षण</div>
+                                <div class="feature-item">✿ संगणक ज्ञान</div>
+                                <div class="feature-item">✿ उत्कृष्ट खेळणी व प्रशस्त मैदान</div>
+                                <div class="feature-item">✿ सहल आयोजन</div>
+                                <div class="feature-item">✿ वाजवी फी</div>
+                                <div class="feature-item">✿ तज डॉक्टरकडून आरोग्य तपासणी</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-features" style="justify-content: center;">
+                        <span class="project-tag">प्ले ग्रुप</span>
+                        <span class="project-tag">नर्सरी</span>
+                        <span class="project-tag">छोटा गट</span>
+                        <span class="project-tag">मोठा गट</span>
+                    </div>
+
+                    <!-- Teachers Section -->
+                    <div class="project-teachers-section">
+                        <h4>✿ शालेय कर्मचारी वर्ग (२०२५-२०२६) ✿</h4>
+
+                        <div class="teachers-grid">
+                            <!-- 1. Headmistress -->
+                            <div class="teacher-card">
+                                <div class="teacher-img">
+                                    <img src="teacher_placeholder_female.svg" alt="सौ. स्वाती ढोरकुले">
+                                </div>
+                                <div class="teacher-info">
+                                    <h5>सौ. स्वाती लक्ष्मण ढोरकुले</h5>
+                                    <div class="teacher-role">मुख्याध्यापिका</div>
+                                    <div class="teacher-edu">शिक्षण: बी.ए.डी.एड.</div>
+                                </div>
+                            </div>
+
+                            <!-- 2. Assistant Teacher -->
+                            <div class="teacher-card">
+                                <div class="teacher-img">
+                                    <img src="teacher_placeholder_female.svg" alt="सौ. दिव्या शिनकर">
+                                </div>
+                                <div class="teacher-info">
+                                    <h5>सौ. दिव्या मयूर शिनकर</h5>
+                                    <div class="teacher-role">उपशिक्षिका</div>
+                                    <div class="teacher-edu">शिक्षण: बी.ए.डी.एड.</div>
+                                </div>
+                            </div>
+
+                            <!-- 3. Assistant Teacher -->
+                            <div class="teacher-card">
+                                <div class="teacher-img">
+                                    <img src="teacher_placeholder_female.svg" alt="सौ. निशा भांड">
+                                </div>
+                                <div class="teacher-info">
+                                    <h5>सौ. निशा योगेश भांड</h5>
+                                    <div class="teacher-role">उपशिक्षिका</div>
+                                    <div class="teacher-edu">शिक्षण: एम.ए.बी.एड.</div>
+                                </div>
+                            </div>
+
+                            <!-- 4. Assistant Teacher -->
+                            <div class="teacher-card">
+                                <div class="teacher-img">
+                                    <img src="teacher_placeholder_female.svg" alt="श्रीमती सीमा शिर्के">
+                                </div>
+                                <div class="teacher-info">
+                                    <h5>श्रीमती सीमा विक्रम शिर्के</h5>
+                                    <div class="teacher-role">उपशिक्षिका</div>
+                                    <div class="teacher-edu">शिक्षण: बी.ए.डी.एड.</div>
+                                </div>
+                            </div>
+
+                            <!-- 5. Assistant Teacher -->
+                            <div class="teacher-card">
+                                <div class="teacher-img">
+                                    <img src="teacher_placeholder_female.svg" alt="सौ. ईश्वरी उदावंत">
+                                </div>
+                                <div class="teacher-info">
+                                    <h5>सौ. ईश्वरी महेंद्र उदावंत</h5>
+                                    <div class="teacher-role">उपशिक्षिका</div>
+                                    <div class="teacher-edu">शिक्षण: बी.ए.माँटसरी</div>
+                                </div>
+                            </div>
+
+                            <!-- 6. Assistant Teacher -->
+                            <div class="teacher-card">
+                                <div class="teacher-img">
+                                    <img src="teacher_placeholder_female.svg" alt="श्रीमती योगिता पाटील">
+                                </div>
+                                <div class="teacher-info">
+                                    <h5>श्रीमती योगिता सुरेश पाटील</h5>
+                                    <div class="teacher-role">उपशिक्षिका</div>
+                                    <div class="teacher-edu">शिक्षण: एम.ए.बी.एड.</div>
+                                </div>
+                            </div>
+
+                            <!-- 7. Helper -->
+                            <div class="teacher-card">
+                                <div class="teacher-img">
+                                    <img src="teacher_placeholder_female.svg" alt="सौ. सुमन प्रजापती">
+                                </div>
+                                <div class="teacher-info">
+                                    <h5>सौ. सुमन धीरेंद्र प्रजापती</h5>
+                                    <div class="teacher-role">मदतनीस</div>
+                                    <div class="teacher-edu">शिक्षण: ८ वी</div>
+                                </div>
+                            </div>
+
+                            <!-- 8. Helper -->
+                            <div class="teacher-card">
+                                <div class="teacher-img">
+                                    <img src="teacher_placeholder_female.svg" alt="सौ. सविता सूर्यवंशी">
+                                </div>
+                                <div class="teacher-info">
+                                    <h5>सौ. सविता गणेश सूर्यवंशी</h5>
+                                    <div class="teacher-role"
+                                        style="color: var(--primary); font-size: 0.9rem; font-weight: 500;">मदतनीस</div>
+                                    <div class="teacher-edu">शिक्षण: ११ वी</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 3rem;">
+                        <a href="admission.html" class="btn btn-primary" style="margin-right: 1rem;">प्रवेशासाठी
+                            संपर्क</a>
+                        <a href="index.html#projects" class="btn btn-outline"
+                            style="border: 2px solid var(--primary); color: var(--primary);">इतर प्रकल्प पहा</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>उत्कर्ष समिती नाशिक विभाग</h3>
+                    <p>सहयोगी प्रयत्नांद्वारे आमच्या समाजाची सेवा करण्यासाठी आणि चिरस्थायी सकारात्मक प्रभाव निर्माण
+                        करण्यासाठी समर्पित.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>त्वरित दुवे</h4>
+                    <ul>
+                        <li><a href="index.html">मुख्यपृष्ठ</a></li>
+                        <li><a href="about.html">आमच्याबद्दल</a></li>
+                        <li><a href="contact.html">संपर्क</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>संपर्क माहिती</h4>
+                    <ul>
+                        <li>Email: info@sevabhaisamiti.org</li>
+                        <li>Phone: ०२५३-२३५०२२३</li>
+                        <li>पत्ता: पब्लिक ट्रस्ट रजि. नं. एफ. ४७, नाशिक प्लॉट नं. बी ११, नाईस एरिया, एम. आय. डी. सी.
+                            सातपूर, नाशिक-७.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 उत्कर्ष समिती नाशिक विभाग. सर्व हक्क राखीव.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js?v=1"></script>
+</body>
+
+</html>

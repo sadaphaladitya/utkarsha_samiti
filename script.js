@@ -96,13 +96,14 @@ if (statNumbers.length > 0) {
     });
 }
 
-// Smooth Scroll
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+// Smooth Scroll & Hash Handling
+function handleScrollToHash() {
+    const hash = window.location.hash;
+    if (hash) {
+        const target = document.querySelector(hash);
         if (target) {
-            const headerOffset = 150; // Account for the new header height
+            const navbar = document.querySelector('.main-navbar');
+            const headerOffset = navbar ? navbar.offsetHeight + 20 : 100;
             const elementPosition = target.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -124,7 +125,43 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 }
             }
         }
+    }
+}
+
+// Handle local anchor clicks
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+
+        // Push state so back button works
+        history.pushState(null, null, targetId);
+
+        // Handle scroll
+        handleScrollToHash();
     });
+});
+
+// Handle initial load scroll if hash exists
+window.addEventListener('load', () => {
+    // Small delay to ensure layout is stable
+    setTimeout(handleScrollToHash, 100);
+});
+
+// Handle External Links containing hash
+// We check if we are on the page that matches the link origin + pathname but has a hash
+document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+    if (anchor.getAttribute('href').startsWith('index.html') && window.location.pathname.endsWith('index.html')) {
+        anchor.addEventListener('click', function (e) {
+            // Check if it's the same page
+            const parts = this.getAttribute('href').split('#');
+            if (parts.length === 2) {
+                e.preventDefault();
+                history.pushState(null, null, '#' + parts[1]);
+                handleScrollToHash();
+            }
+        });
+    }
 });
 
 // Contact Form Handler
@@ -165,6 +202,39 @@ if (contactForm) {
 
         // In a real application, you would send this data to a server
         console.log('Form Data:', formData);
+    });
+}
+
+// Donation Form Handler
+const donationForm = document.getElementById('donationForm');
+
+if (donationForm) {
+    donationForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Get form data
+        const formData = {
+            name: document.getElementById('d-name').value,
+            phone: document.getElementById('d-phone').value,
+            amount: document.getElementById('d-amount').value,
+            message: document.getElementById('d-message').value
+        };
+
+        // Validate
+        if (!formData.name || !formData.phone || !formData.amount) {
+            alert('कृपया सर्व आवश्यक माहिती भरा.'); // "Please fill all required fields" in Marathi
+            return;
+        }
+
+        // Simulate form submission
+        alert(`धन्यवाद! तुमची ₹${formData.amount} ची देणगी विनंती स्वीकारली गेली आहे. आम्ही लवकरच तुमच्याशी संपर्क साधू.`);
+        // "Thank you! Your donation request of ... has been accepted. We will contact you soon."
+
+        // Reset form
+        donationForm.reset();
+
+        // In a real application, you would send this data to a server
+        console.log('Donation Data:', formData);
     });
 }
 
@@ -293,4 +363,303 @@ function updateClock() {
     // Also attach to window load just in case
     window.addEventListener('load', updateClock);
 })();
+
+
+// Gallery Modal Logic
+const galleryModal = document.getElementById('galleryModal');
+
+function openGalleryModal(imgSrc, title, desc) {
+    if (!galleryModal) return;
+
+    const modalImg = document.getElementById('galleryModalImg');
+    const modalTitle = document.getElementById('galleryModalTitle');
+    const modalDesc = document.getElementById('galleryModalDesc');
+
+    if (modalImg) modalImg.src = imgSrc;
+    if (modalTitle) modalTitle.textContent = title;
+    if (modalDesc) modalDesc.textContent = desc;
+
+    galleryModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeGalleryModal() {
+    if (galleryModal) {
+        galleryModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+// Close gallery modal on background click
+if (galleryModal) {
+    galleryModal.addEventListener('click', (e) => {
+        if (e.target === galleryModal) {
+            closeGalleryModal();
+        }
+    });
+}
+
+// Close on escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeGalleryModal();
+    }
+});
+
+// Language Switcher Logic
+const languageData = {
+    en: {
+        nav_home: "HOME",
+        nav_about: "ABOUT US",
+        nav_projects: "PROJECTS ▾",
+        nav_committee: "COMMITTEE",
+        nav_activities: "ACTIVITIES",
+        nav_gallery: "GALLERY",
+        nav_donation: "DONATION",
+        nav_contact: "CONTACT US",
+        nav_admission: "Admission Form",
+        btn_upload: "Upload Photo",
+        nav_lang: "मराठी",
+        footer_quick_links: "Quick Links",
+        footer_contact_info: "Contact Info"
+    },
+    mr: {
+        nav_home: "मुख्यपृष्ठ",
+        nav_about: "आमच्याबद्दल",
+        nav_projects: "प्रकल्प ▾",
+        nav_committee: "समिती",
+        nav_activities: "उपक्रम",
+        nav_gallery: "गॅलरी",
+        nav_donation: "देणगी",
+        nav_contact: "संपर्क",
+        nav_admission: "प्रवेश अर्ज",
+        btn_upload: "फोटो अपलोड करा",
+        nav_lang: "English",
+        footer_quick_links: "त्वरित दुवे",
+        footer_contact_info: "संपर्क माहिती"
+    }
+};
+
+let currentLang = 'en'; // Default from HTML structure
+
+function toggleLanguage() {
+    currentLang = currentLang === 'en' ? 'mr' : 'en';
+    const data = languageData[currentLang];
+
+    // Update Navigation links
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => {
+        const text = item.textContent.trim();
+        if (text === 'HOME' || text === 'मुख्यपृष्ठ') item.textContent = data.nav_home;
+        else if (text === 'ABOUT US' || text === 'आमच्याबद्दल') item.textContent = data.nav_about;
+        else if (text.includes('PROJECTS') || text.includes('प्रकल्प')) item.innerHTML = data.nav_projects;
+        else if (text === 'COMMITTEE' || text === 'समिती') item.textContent = data.nav_committee;
+        else if (text === 'ACTIVITIES' || text === 'उपक्रम') item.textContent = data.nav_activities;
+        else if (text === 'GALLERY' || text === 'गॅलरी') item.textContent = data.nav_gallery;
+        else if (text === 'DONATION' || text === 'देणगी') item.textContent = data.nav_donation;
+        else if (text === 'CONTACT US' || text === 'संपर्क') item.textContent = data.nav_contact;
+
+        if (item.classList.contains('marathi-btn')) {
+            item.textContent = data.nav_lang;
+        }
+    });
+
+    // Update Dropdown Links
+    const dropdownLinks = document.querySelectorAll('.dropdown-content a');
+    dropdownLinks.forEach(link => {
+        const text = link.textContent.trim();
+        if (text === 'All Projects' || text === 'सर्व प्रकल्प') link.textContent = currentLang === 'en' ? 'All Projects' : 'सर्व प्रकल्प';
+        else if (text === 'Utkarsh Balmandir (Balwadi)' || text === 'उत्कर्ष बालमंदिर') link.textContent = currentLang === 'en' ? 'Utkarsh Balmandir (Balwadi)' : 'उत्कर्ष बालमंदिर';
+        else if (text === 'Admission Form' || text === 'प्रवेश अर्ज') link.textContent = data.nav_admission;
+    });
+
+
+    // Update Footer headers
+    const footerHeaders = document.querySelectorAll('.footer-section h4');
+    footerHeaders.forEach(header => {
+        if (header.textContent.includes('त्वरित दुवे') || header.textContent.includes('Quick Links')) {
+            header.textContent = data.footer_quick_links;
+        } else if (header.textContent.includes('संपर्क माहिती') || header.textContent.includes('Contact Info')) {
+            header.textContent = data.footer_contact_info;
+        }
+    });
+
+    // Update Upload Button
+    const uploadBtn = document.querySelector('button[onclick="openUploadModal()"]');
+    if (uploadBtn) {
+        uploadBtn.innerHTML = `<span style="margin-right: 0.5rem;">📷</span> ${data.btn_upload}`;
+    }
+
+    // Save preference
+    localStorage.setItem('preferredLang', currentLang);
+}
+
+// Upload Modal Logic
+function openUploadModal() {
+    const modal = document.getElementById('uploadModal');
+    if (modal) {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeUploadModal() {
+    const modal = document.getElementById('uploadModal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// Handle Upload Form Submission
+const uploadForm = document.getElementById('uploadForm');
+if (uploadForm) {
+    uploadForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const title = document.getElementById('photo-title').value;
+        const desc = document.getElementById('photo-desc').value;
+        const fileInput = document.getElementById('photo-file');
+        const file = fileInput.files[0];
+
+        if (file) {
+            const formData = new FormData();
+            formData.append('title', title);
+            formData.append('desc', desc);
+            formData.append('photo', file);
+
+            fetch('upload_handler.php', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        alert(data.message);
+                        uploadForm.reset();
+                        closeUploadModal();
+                        // Reload gallery to show new photo
+                        loadGallery();
+                    } else {
+                        alert(data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('काहीतरी चूक झाली. कृपया पुन्हा प्रयत्न करा.');
+                });
+        }
+    });
+}
+
+// Admission Form Logic
+const admissionForm = document.getElementById('admissionForm');
+if (admissionForm) {
+    admissionForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const formData = new FormData(admissionForm);
+
+        fetch('admission_handler.php', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    alert(data.message);
+                    admissionForm.reset();
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('अर्ज पाठवताना चूक झाली.');
+            });
+    });
+}
+
+// Load Gallery from Database
+function loadGallery() {
+    const galleryGrid = document.querySelector('.gallery-grid');
+    if (!galleryGrid) return;
+
+    fetch('fetch_gallery.php')
+        .then(response => response.json())
+        .then(photos => {
+            if (Array.isArray(photos)) {
+                photos.forEach(photo => {
+                    if (document.querySelector(`div[data-id="${photo.id}"]`)) return;
+
+                    const newItem = document.createElement('div');
+                    newItem.className = 'gallery-item';
+                    newItem.setAttribute('data-id', photo.id);
+
+                    // Delete Button
+                    const deleteBtn = document.createElement('button');
+                    deleteBtn.className = 'delete-btn';
+                    deleteBtn.innerHTML = '&times;';
+                    deleteBtn.title = 'फोटो काढा';
+                    deleteBtn.onclick = function (e) {
+                        e.stopPropagation();
+                        if (confirm('हा फोटो कायमचा काढायचा आहे का?')) {
+                            deletePhoto(photo.id, newItem);
+                        }
+                    };
+
+                    newItem.onclick = function () {
+                        openGalleryModal(photo.image_path, photo.title, photo.description || 'गॅलरी फोटो');
+                    };
+
+                    newItem.innerHTML = `
+                         <img src="${photo.image_path}" alt="${photo.title}">
+                         <div class="gallery-overlay">
+                             <h3>${photo.title}</h3>
+                             <p>${photo.description || ''}</p>
+                         </div>
+                     `;
+
+                    newItem.appendChild(deleteBtn);
+                    galleryGrid.insertBefore(newItem, galleryGrid.firstChild);
+                });
+            }
+        })
+        .catch(error => console.error('Error fetching gallery:', error));
+}
+
+function deletePhoto(id, element) {
+    const formData = new FormData();
+    formData.append('id', id);
+
+    fetch('delete_photo.php', {
+        method: 'POST',
+        body: formData
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                element.remove();
+                alert(data.message);
+            } else {
+                alert(data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('फोटो काढताना चूक झाली.');
+        });
+}
+
+// Initialize gallery if on gallery page
+window.addEventListener('load', loadGallery);
+
+
+// Attach listener to Marathi Button
+const langBtn = document.querySelector('.marathi-btn');
+if (langBtn) {
+    langBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        toggleLanguage();
+    });
+}
 

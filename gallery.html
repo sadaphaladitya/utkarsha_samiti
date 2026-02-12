@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="mr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="उत्कर्ष समिती नाशिक विभाग - गॅलरी. आमच्या विविध उपक्रमांचे आणि कार्यक्रमांचे फोटो.">
+    <title>गॅलरी - उत्कर्ष समिती नाशिक विभाग</title>
+    <link rel="stylesheet" href="style.css?v=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <span>UTKARSHA SAMITI NASHIK | Reg. No. F-12345/Nashik</span>
+                <div class="header-clock">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <span id="clock-text">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header with Logo & Contact Info -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-inner">
+                <!-- Logo Section -->
+                <div class="header-logo-section">
+                    <img src="utkarsha_logo.png" alt="Logo" class="main-logo">
+                    <div class="header-text">
+                        <h1>उत्कर्ष समिती <span class="sub-location">नाशिक विभाग</span></h1>
+                        <p>सेवाभावी संस्था, नाशिक</p>
+                    </div>
+                </div>
+
+                <!-- Mahapurush Images Section (Top Right) -->
+                <div class="header-mahapurush-section">
+                    <div class="mahapurush-header-item">
+                        <img src="shivaji_logo_new.png" alt="छत्रपती शिवाजी महाराज" title="छत्रपती शिवाजी महाराज">
+                    </div>
+                    <div class="mahapurush-header-item">
+                        <img src="ambedkar_logo_new.png" alt="डॉ. बाबासाहेब आंबेडकर" title="डॉ. बाबासाहेब आंबेडकर">
+                    </div>
+                    <div class="mahapurush-header-item">
+                        <img src="JOTI BA LOGO.png" alt="महात्मा ज्योतिबा फुले" title="महात्मा ज्योतिबा फुले">
+                    </div>
+                    <div class="mahapurush-header-item">
+                        <img src="savitribai log.png" alt="सावित्रीबाई फुले" title="सावित्रीबाई फुले">
+                    </div>
+                    <div class="mahapurush-header-item">
+                        <img src="shaumaharaj logo.png" alt="राजर्षी शाहू महाराज" title="राजर्षी शाहू महाराज">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="main-navbar">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-item home-btn">HOME</a>
+                <div class="nav-links" id="navLinks">
+                    <a href="about.html" class="nav-item">ABOUT US</a>
+                    <div class="dropdown-container">
+                        <a href="index.html#projects" class="nav-item">PROJECTS ▾</a>
+                        <div class="dropdown-content">
+                            <a href="index.html#projects">All Projects</a>
+                            <a href="balwadi.html">Utkarsh Balmandir (Balwadi)</a>
+                            <a href="admission.html">Admission Form</a>
+                        </div>
+                    </div>
+                    <a href="gallery.html" class="nav-item active">GALLERY</a>
+                    <a href="index.html#committee" class="nav-item">COMMITTEE</a>
+                    <a href="index.html#features" class="nav-item">ACTIVITIES</a>
+                    <a href="donation.html" class="nav-item">DONATION</a>
+                    <a href="contact.html" class="nav-item">CONTACT US</a>
+                    <a href="#" class="nav-item marathi-btn">मराठी</a>
+                </div>
+                <div class="nav-search">
+                    <button class="search-btn">🔍</button>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>आमची गॅलरी</h1>
+            <p>आमच्या प्रवासातील काही आठवणी आणि महत्त्वाचे क्षण</p>
+            <div style="margin-top: 2rem;">
+                <button class="btn btn-primary" onclick="openUploadModal()">
+                    <span style="margin-right: 0.5rem;">📷</span> फोटो अपलोड करा
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Grid Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="gallery-grid">
+                <!-- Row 1 -->
+                <div class="gallery-item"
+                    onclick="openGalleryModal('hero-banner.svg', 'शिक्षण उपक्रम', 'बालवाडीतील मुले नवीन गोष्टी शिकताना')">
+                    <img src="hero-banner.svg" alt="शिक्षण उपक्रम">
+                    <div class="gallery-overlay">
+                        <h3>शिक्षण उपक्रम</h3>
+                        <p>बालवाडीतील मुले नवीन गोष्टी शिकताना</p>
+                    </div>
+                </div>
+                <div class="gallery-item"
+                    onclick="openGalleryModal('balwadi_bg.svg', 'आरोग्य शिबिर', 'समुदायासाठी मोफत आरोग्य तपासणी')">
+                    <img src="balwadi_bg.svg" alt="आरोग्य शिबिर">
+                    <div class="gallery-overlay">
+                        <h3>आरोग्य शिबिर</h3>
+                        <p>समुदायासाठी मोफत आरोग्य तपासणी</p>
+                    </div>
+                </div>
+                <div class="gallery-item"
+                    onclick="openGalleryModal('hero-banner.svg', 'वृक्षारोपण', 'पर्यावरण रक्षणासाठी आमचा पुढाकार')">
+                    <img src="hero-banner.svg" alt="वृक्षारोपण">
+                    <div class="gallery-overlay">
+                        <h3>वृक्षारोपण</h3>
+                        <p>पर्यावरण रक्षणासाठी आमचा पुढाकार</p>
+                    </div>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="gallery-item"
+                    onclick="openGalleryModal('balwadi_bg.svg', 'कौशल्य विकास', 'युवकांसाठी संगणक प्रशिक्षण वर्ग')">
+                    <img src="balwadi_bg.svg" alt="कौशल्य विकास">
+                    <div class="gallery-overlay">
+                        <h3>कौशल्य विकास</h3>
+                        <p>युवकांसाठी संगणक प्रशिक्षण वर्ग</p>
+                    </div>
+                </div>
+                <div class="gallery-item"
+                    onclick="openGalleryModal('hero-banner.svg', 'स्थापना दिवस', 'संस्थेच्या वर्धापन दिनाचे सेलिब्रेशन')">
+                    <img src="hero-banner.svg" alt="स्थापना दिवस">
+                    <div class="gallery-overlay">
+                        <h3>स्थापना दिवस</h3>
+                        <p>संस्थेच्या वर्धापन दिनाचे सेलिब्रेशन</p>
+                    </div>
+                </div>
+                <div class="gallery-item"
+                    onclick="openGalleryModal('balwadi_bg.svg', 'मदत वाटप', 'गरजू विद्यार्थ्यांना शालेय साहित्याचे वाटप')">
+                    <img src="balwadi_bg.svg" alt="मदत वाटप">
+                    <div class="gallery-overlay">
+                        <h3>मदत वाटप</h3>
+                        <p>गरजू विद्यार्थ्यांना शालेय साहित्याचे वाटप</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Modal -->
+    <div id="galleryModal" class="gallery-modal">
+        <button class="gallery-modal-close" onclick="closeGalleryModal()">&times;</button>
+        <div class="gallery-modal-content">
+            <img src="" alt="" class="gallery-modal-img" id="galleryModalImg">
+            <div class="gallery-modal-info" style="color: white; margin-top: 1rem; text-align: center;">
+                <h3 id="galleryModalTitle" style="font-size: 1.5rem; margin-bottom: 0.5rem;"></h3>
+                <p id="galleryModalDesc" style="font-size: 1rem; opacity: 0.9;"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upload Modal -->
+    <div id="uploadModal" class="gallery-modal">
+        <button class="gallery-modal-close" onclick="closeUploadModal()">&times;</button>
+        <div class="gallery-modal-content"
+            style="max-width: 500px; background: white; padding: 2.5rem; border-radius: 15px;">
+            <h2 style="color: var(--primary-dark); margin-bottom: 1.5rem; text-align: center;">नवीन फोटो जोडा</h2>
+            <form id="uploadForm" class="contact-form">
+                <div class="form-group">
+                    <label for="photo-file">फोटो निवडा <span class="required">*</span></label>
+                    <input type="file" id="photo-file" accept="image/*" required style="padding: 0.5rem;">
+                </div>
+                <div class="form-group">
+                    <label for="photo-title">शीर्षक (Title) <span class="required">*</span></label>
+                    <input type="text" id="photo-title" placeholder="उदा. सहल २०२४" required>
+                </div>
+                <div class="form-group">
+                    <label for="photo-desc">माहिती (Description)</label>
+                    <textarea id="photo-desc" rows="3" placeholder="या फोटोंबद्दल थोडक्यात माहिती..."></textarea>
+                </div>
+                <div style="text-align: center; margin-top: 1.5rem;">
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">अपलोड करा</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>उत्कर्ष समिती नाशिक विभाग</h3>
+                    <p>सहयोगी प्रयत्नांद्वारे आमच्या समाजाची सेवा करण्यासाठी आणि चिरस्थायी सकारात्मक प्रभाव निर्माण
+                        करण्यासाठी समर्पित.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>त्वरित दुवे</h4>
+                    <ul>
+                        <li><a href="index.html">मुख्यपृष्ठ</a></li>
+                        <li><a href="about.html">आमच्याबद्दल</a></li>
+                        <li><a href="contact.html">संपर्क</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>संपर्क माहिती</h4>
+                    <ul>
+                        <li>Email: info@sevabhaisamiti.org</li>
+                        <li>Phone: ०२५३-२३५०२२३</li>
+                        <li>पत्ता: पब्लिक ट्रस्ट रजि. नं. एफ. ४७, नाशिक प्लॉट नं. बी ११, नाईस एरिया, एम. आय. डी. सी.
+                            सातपूर, नाशिक-७.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 उत्कर्ष समिती नाशिक विभाग. सर्व हक्क राखीव.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js?v=1"></script>
+</body>
+
+</html>

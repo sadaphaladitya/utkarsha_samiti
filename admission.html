@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="mr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="उत्कर्ष बालमंदिर बालवाडी - प्रवेश अर्ज. आपल्या पाल्याच्या उज्ज्वल भविष्यासाठी आमचे प्रवेश अर्ज भरा.">
+    <title>प्रवेश अर्ज - उत्कर्ष बालमंदिर बालवाडी</title>
+    <link rel="stylesheet" href="style.css?v=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .admission-form-section {
+            padding: 5rem 0;
+            background: #fff;
+        }
+
+        .admission-card {
+            background: #fff;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-dark);
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #f8f9fa;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            cursor: pointer;
+        }
+
+        .radio-item input {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <span>UTKARSHA SAMITI NASHIK | Reg. No. F-12345/Nashik</span>
+                <div class="header-clock">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <span id="clock-text">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="header-logo-section">
+                    <img src="utkarsha_logo.png" alt="Logo" class="main-logo">
+                    <div class="header-text">
+                        <h1>उत्कर्ष समिती <span class="sub-location">नाशिक विभाग</span></h1>
+                        <p>सेवाभावी संस्था, नाशिक</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="main-navbar">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-item home-btn">HOME</a>
+                <div class="nav-links" id="navLinks">
+                    <a href="about.html" class="nav-item">ABOUT US</a>
+                    <div class="dropdown-container">
+                        <a href="index.html#projects" class="nav-item active">PROJECTS ▾</a>
+                        <div class="dropdown-content">
+                            <a href="index.html#projects">All Projects</a>
+                            <a href="balwadi.html">Utkarsh Balmandir (Balwadi)</a>
+                        </div>
+                    </div>
+                    <a href="gallery.html" class="nav-item">GALLERY</a>
+                    <a href="index.html#committee" class="nav-item">COMMITTEE</a>
+                    <a href="index.html#features" class="nav-item">ACTIVITIES</a>
+                    <a href="donation.html" class="nav-item">DONATION</a>
+                    <a href="contact.html" class="nav-item">CONTACT US</a>
+                    <a href="#" class="nav-item marathi-btn">मराठी</a>
+                </div>
+                <div class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMenu()">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>प्रवेश अर्ज (२०२५-२०२६)</h1>
+            <p>उत्कर्ष बालमंदिर बालवाडी (सेमी इंग्रजी माध्यम)</p>
+        </div>
+    </section>
+
+    <section class="admission-form-section">
+        <div class="container">
+            <div class="admission-card">
+                <h2 class="form-title">विद्यार्थी नोंदणी अर्ज</h2>
+                <form id="admissionForm" class="contact-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="student-name">विद्यार्थ्याचे पूर्ण नाव <span class="required">*</span></label>
+                            <input type="text" id="student-name" name="student-name" required
+                                placeholder="उदा. प्रथमेश राजेश पाटील">
+                        </div>
+                        <div class="form-group">
+                            <label for="dob">जन्मतारीख <span class="required">*</span></label>
+                            <input type="date" id="dob" name="dob" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="parent-name">पालकांचे पूर्ण नाव <span class="required">*</span></label>
+                            <input type="text" id="parent-name" name="parent-name" required
+                                placeholder="वडिलांचे/आईचे नाव">
+                        </div>
+                        <div class="form-group">
+                            <label for="mobile">मोबाईल नंबर <span class="required">*</span></label>
+                            <input type="tel" id="mobile" name="mobile" required placeholder="१० अंकी मोबाईल नंबर">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>कोणत्या गटात प्रवेश हवा आहे? <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <label class="radio-item"><input type="radio" name="class" value="Play Group" required> प्ले
+                                ग्रुप</label>
+                            <label class="radio-item"><input type="radio" name="class" value="Nursery"> नर्सरी</label>
+                            <label class="radio-item"><input type="radio" name="class" value="Jr KG"> छोटा गट (Jr.
+                                KG)</label>
+                            <label class="radio-item"><input type="radio" name="class" value="Sr KG"> मोठा गट (Sr.
+                                KG)</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">संपूर्ण पत्ता <span class="required">*</span></label>
+                        <textarea id="address" name="address" required rows="3"
+                            placeholder="घर क्रमांक, गल्ली, एरिया, नाशिक"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">इतर काही माहिती (ऐच्छिक)</label>
+                        <textarea id="notes" name="notes" rows="2" placeholder="काही विशेष सुचना असल्यास..."></textarea>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <button type="submit" class="btn btn-primary">प्रवेश अर्ज सादर करा</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 उत्कर्ष समिती नाशिक विभाग. सर्व हक्क राखीव.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js?v=1"></script>
+
+</body>
+
+</html>
