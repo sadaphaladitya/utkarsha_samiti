@@ -268,3 +268,29 @@ document.addEventListener('keydown', (e) => {
         document.body.style.overflow = '';
     }
 });
+
+// Real-time Clock Function
+// Real-time Clock Function
+function updateClock() {
+    // Try to find the element
+    const clockText = document.getElementById('clock-text');
+    if (clockText) {
+        const now = new Date();
+        const dateString = now.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+        const timeString = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+        clockText.textContent = dateString + ' | ' + timeString;
+    }
+}
+
+// Robust Initialization
+(function initClock() {
+    // Try immediately
+    updateClock();
+
+    // Set interval regardless of DOM state because element might exist
+    setInterval(updateClock, 1000);
+
+    // Also attach to window load just in case
+    window.addEventListener('load', updateClock);
+})();
+
